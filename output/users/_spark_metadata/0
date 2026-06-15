@@ -1,0 +1,4 @@
+v1
+{"path":"file:///Users/nithinrajan/Desktop/Nithin/DE%20Projects/kafka-spark-airflow-pipeline/output/users/part-00000-1339b4cc-1665-479f-8e6c-bdf9b5b31c9c-c000.snappy.parquet","size":3412,"isDir":false,"modificationTime":1781545152817,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///Users/nithinrajan/Desktop/Nithin/DE%20Projects/kafka-spark-airflow-pipeline/output/users/part-00001-69246945-e0ae-435d-a256-ebf77b8dfa86-c000.snappy.parquet","size":3844,"isDir":false,"modificationTime":1781545152817,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///Users/nithinrajan/Desktop/Nithin/DE%20Projects/kafka-spark-airflow-pipeline/output/users/part-00002-2c5f901a-b177-490d-bc74-b21ccb6af2ee-c000.snappy.parquet","size":3325,"isDir":false,"modificationTime":1781545152817,"blockReplication":1,"blockSize":33554432,"action":"add"}

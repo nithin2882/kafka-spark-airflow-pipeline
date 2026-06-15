@@ -51,8 +51,10 @@ final_df = json_df.select(
 
 query = (
     final_df.writeStream
-    .format("console")
+    .format("parquet")
     .outputMode("append")
+    .option("path", "output/users")
+    .option("checkpointLocation", "output/checkpoints")
     .start()
 )
 
