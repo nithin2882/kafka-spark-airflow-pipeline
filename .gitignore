@@ -1,13 +1,14 @@
+.env
+
 __pycache__/
 *.pyc
-.env
+
 .venv/
 venv/
-
-spark-warehouse/
-checkpoints/
 
 .idea/
 .vscode/
 
-.DS_Store
+spark-warehouse/
+
+*.log
