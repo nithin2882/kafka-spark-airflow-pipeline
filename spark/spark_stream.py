@@ -14,6 +14,10 @@ run_id = sys.argv[1]
 load_dotenv()
 bucket = os.getenv("S3_BUCKET_NAME")
 
+KAFKA_BOOTSTRAP_SERVERS = os.getenv(
+    "KAFKA_BOOTSTRAP_SERVERS"
+)
+
 schema = StructType([
     StructField("first_name", StringType(), True),
     StructField("last_name", StringType(), True),
@@ -56,7 +60,7 @@ spark.sparkContext.setLogLevel("WARN")
 df = (
     spark.readStream
     .format("kafka")
-    .option("kafka.bootstrap.servers", "localhost:9092")
+    .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS)
     .option("subscribe", "users_topic")
     .option("startingOffsets", "latest")
     .load()

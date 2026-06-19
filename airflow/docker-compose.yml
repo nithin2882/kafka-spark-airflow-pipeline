@@ -21,6 +21,7 @@ services:
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__WEBSERVER__SECRET_KEY: my_super_secret_key
 
     volumes:
       - ./dags:/opt/airflow/dags
@@ -50,12 +51,19 @@ services:
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__WEBSERVER__SECRET_KEY: my_super_secret_key
+      KAFKA_BOOTSTRAP_SERVERS: host.docker.internal:9092
 
     volumes:
       - ./dags:/opt/airflow/dags
       - ../:/opt/airflow/project
+      - ../requirements.txt:/opt/airflow/requirements.txt
 
-    command: webserver
+    command: >
+      bash -c "
+      pip install -r /opt/airflow/requirements.txt &&
+      airflow webserver
+      "
 
   airflow-scheduler:
     image: apache/airflow:2.10.0
@@ -67,9 +75,16 @@ services:
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__WEBSERVER__SECRET_KEY: my_super_secret_key
+      KAFKA_BOOTSTRAP_SERVERS: host.docker.internal:9092
 
     volumes:
       - ./dags:/opt/airflow/dags
       - ../:/opt/airflow/project
+      - ../requirements.txt:/opt/airflow/requirements.txt
 
-    command: scheduler
+    command: >
+      bash -c "
+      pip install -r /opt/airflow/requirements.txt &&
+      airflow scheduler
+      "
